@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CreateJS export from shirt.fla</title>
+
+<script src="libs/easeljs-0.4.2.min.js"></script>
+<script src="libs/preloadjs-0.1.0.min.js"></script>
+<script src="shirt.js"></script>
+
+<script>
+var canvas, stage, exportRoot, images;
+
+function init() {
+	canvas = document.getElementById("canvas");
+	images = {};
+
+	var manifest = [
+		{src:"images/alpha.png", id:"alpha"},
+		{src:"images/transbg.png", id:"transbg"}
+	];
+
+	var loader = new PreloadJS(false);
+	loader.onFileLoad = handleFileLoad;
+	loader.onComplete = handleComplete;
+	loader.loadManifest(manifest);
+}
+
+function handleFileLoad(o) {
+	if (o.type == "image") { images[o.id] = o.result; }
+}
+
+function handleComplete() {
+	exportRoot = new lib.shirt();
+
+	stage = new Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+
+	Ticker.setFPS(60);
+	Ticker.addListener(stage);
+}
+</script>
+</head>
+
+<body onload="init();" style="background-color:#D4D4D4">
+	<canvas id="canvas" width="760" height="500" style="background-color:#cccccc"></canvas>
+</body>
+</html>

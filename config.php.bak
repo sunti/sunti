@@ -1,0 +1,8 @@
+<?
+	$appID = '126663087416513';
+	$secret = 'ea81b7716f48d6dfabe126d8096683d9';
+	$channelURL = 'http://localhost/shirt/channel.html';
+	$appName = "rhythmx";
+	$gamebase = "http://localhost/shirt";
+	$picbase = "http://localhost/shirt/pic";
+?>
